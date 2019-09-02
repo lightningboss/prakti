@@ -1,14 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PageWrapper from './PageWrapper';
 import ButtonGroup from './ButtonGroup';
 
-const currentState = 'firstStudentRaisedHand';
-const onAction = console.log;
+import { praktiMachine } from './lib/stateMachine';
 
-const App = () => (
-    <PageWrapper>
-        <ButtonGroup currentState={currentState} onAction={onAction} />
-    </PageWrapper>
-);
+const App = () => {
+    const [currentState, setNextState] = useState(praktiMachine.initial);
+    const onAction = actionId => {
+        const nextState = praktiMachine.transition(currentState, actionId);
+        setNextState(nextState.value);
+    };
+
+    return (
+        <PageWrapper>
+            <ButtonGroup currentState={currentState} onAction={onAction} />
+        </PageWrapper>
+    );
+};
 
 export default App;

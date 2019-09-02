@@ -4,16 +4,13 @@ import Box from '@material-ui/core/Box';
 import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
 
-import { praktiMachine, getActionText } from './lib/stateMachine';
+import { getPossibleNextActions } from './lib/stateMachine';
 
 const useStyles = makeStyles(theme => ({
     root: {
         padding: theme.spacing(3, 2),
     },
 }));
-
-const getPossibleNextActions = currentStateId =>
-    Object.keys(praktiMachine.states[currentStateId].on);
 
 const ButtonGroup = ({ currentState, onAction }) => {
     const classes = useStyles();
@@ -27,9 +24,9 @@ const ButtonGroup = ({ currentState, onAction }) => {
                 flexDirection="column"
                 minHeight={200}
             >
-                {getPossibleNextActions(currentState).map(action => (
-                    <MButton key={action} onClick={() => onAction(action)}>
-                        {getActionText(action)}
+                {getPossibleNextActions(currentState).map(({ actionId, actionText }) => (
+                    <MButton key={actionId} onClick={() => onAction(actionId)}>
+                        {actionText}
                     </MButton>
                 ))}
             </Box>

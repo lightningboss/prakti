@@ -26,11 +26,11 @@ const actionStrings = {
     [TEACHER_REACTED_UNEXPECTEDLY]: 'Unerwartete Reaktion',
 };
 
-export const getActionText = id => actionStrings[id] || throwActionTextError();
-
-const throwActionTextError = () => {
-    throw new Error('No action with this id defined');
-};
+export const getPossibleNextActions = currentStateId =>
+    Object.keys(praktiMachine.states[currentStateId].on).map(nextStateId => ({
+        actionId: nextStateId,
+        actionText: actionStrings[nextStateId],
+    }));
 
 export const praktiMachine = Machine({
     id: 'prakti',
@@ -66,3 +66,5 @@ export const praktiMachine = Machine({
         },
     },
 });
+
+window.prakti = praktiMachine;
