@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Box from '@material-ui/core/Box';
 import PageWrapper from './PageWrapper';
-import ButtonGroup from './ButtonGroup';
+import ButtonGroup from './components/ButtonGroup';
 import LogTable from './components/LogTable';
 
 import { praktiMachine } from './lib/stateMachine';
