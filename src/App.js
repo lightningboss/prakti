@@ -45,22 +45,26 @@ const App = () => {
         return praktiMachine.initial;
     });
     const [log, setLog] = useState(() => getInitialData() || defaultLog);
-
-    const onAction = actionId => {
-        const { value: nextState } = praktiMachine.transition(currentState, actionId);
+    const addToLog = ({ action, currentState, nextState, meta = null }) => {
         const newLog = [
             {
                 id: getNewId(),
                 time: Date.now(),
-                action: actionId,
+                action,
                 currentState,
                 nextState,
+                meta,
             },
             ...log,
         ];
         setLog(newLog);
-        setNextState(nextState);
         persistData(newLog);
+    };
+
+    const onAction = actionId => {
+        const { value: nextState } = praktiMachine.transition(currentState, actionId);
+        setNextState(nextState);
+        addToLog({ action: actionId, currentState, nextState });
     };
 
     return (
@@ -87,7 +91,14 @@ const App = () => {
                         window.prompt('Copy to clipboard:', getPersistedDataAsString());
                     }}
                     setSubject={() => {
-                        window.alert('Not implemented yet!');
+                        const newSubject = window.prompt('Neues Fach:');
+                        addToLog({
+                            action: 'NEW_SUBJECT',
+                            currentState,
+                            nextState: currentState,
+                            meta: { newSubject },
+                        });
+                        closeSettings();
                     }}
                 />
             </Box>
