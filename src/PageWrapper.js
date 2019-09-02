@@ -1,29 +1,17 @@
 import React from 'react';
-import { AppBar, Box, CssBaseline, Typography, Toolbar, makeStyles } from '@material-ui/core';
-
-const useStyles = makeStyles(theme => ({
-    root: {
-        flexGrow: 1,
-    },
-    title: {
-        flexGrow: 1,
-    },
-}));
+import { AppBar, Box, CssBaseline, Typography, Toolbar } from '@material-ui/core';
 
 const PageWrapper = ({ children }) => {
-    const classes = useStyles();
     return (
-        <div className={classes.root}>
+        <>
             <CssBaseline />
-            <AppBar position="static" className={classes.appBar}>
+            <AppBar position="static">
                 <Toolbar>
-                    <Typography variant="h6" className={classes.title}>
-                        Prakti
-                    </Typography>
+                    <Typography variant="h6">Prakti</Typography>
                 </Toolbar>
             </AppBar>
             <Box m={2}>{children}</Box>
-        </div>
+        </>
     );
 };
 

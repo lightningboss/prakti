@@ -32,6 +32,8 @@ export const getPossibleNextActions = currentStateId =>
         actionText: actionStrings[nextStateId],
     }));
 
+export const getCurrentStateName = currentStateId => praktiMachine.states[currentStateId].meta.name;
+
 export const praktiMachine = Machine({
     id: 'prakti',
     initial: 'questionFinished',
@@ -40,11 +42,17 @@ export const praktiMachine = Machine({
             on: {
                 [NEW_QUESTION_ASKED]: 'newQuestionAsked',
             },
+            meta: {
+                name: 'Start',
+            },
         },
         newQuestionAsked: {
             on: {
                 [TEACHER_STARTED_REACTING]: 'teacherStartedReacting',
                 [FIRST_STUDENT_RAISED_HAND]: 'firstStudentRaisedHand',
+            },
+            meta: {
+                name: 'Neue Frage gestellt',
             },
         },
         teacherStartedReacting: {
@@ -56,12 +64,18 @@ export const praktiMachine = Machine({
                 [TEACHER_ANSWERED_QUESTION]: 'questionFinished',
                 [TEACHER_REACTED_UNEXPECTEDLY]: 'questionFinished',
             },
+            meta: {
+                name: 'Lehrer reagiert...',
+            },
         },
         firstStudentRaisedHand: {
             on: {
                 [TEACHER_STARTED_REACTING]: 'teacherStartedReacting',
                 [FIRST_STUDENT_ANSWERED_QUESTION]: 'questionFinished',
                 [SOME_STUDENT_ANSWERED_QUESTION]: 'questionFinished',
+            },
+            meta: {
+                name: 'Schüler meldete sich',
             },
         },
     },
