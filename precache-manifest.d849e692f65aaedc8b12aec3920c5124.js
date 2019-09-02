@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "e2b55b4b850f19d2f9d4ff6f591b1239",
+    "revision": "a80d6534741d746eb3021a212b0c93f6",
     "url": "/prakti/index.html"
   },
   {
-    "revision": "6b6f8c38f476bb449042",
+    "revision": "8cacaf0369b09929e4b5",
     "url": "/prakti/static/css/2.251f1c13.chunk.css"
   },
   {
-    "revision": "0314471c1740dc35e7b9",
+    "revision": "f87302155edfb036992c",
     "url": "/prakti/static/css/main.b8276fa2.chunk.css"
   },
   {
-    "revision": "6b6f8c38f476bb449042",
-    "url": "/prakti/static/js/2.afb028ba.chunk.js"
+    "revision": "8cacaf0369b09929e4b5",
+    "url": "/prakti/static/js/2.c793d5e7.chunk.js"
   },
   {
-    "revision": "0314471c1740dc35e7b9",
-    "url": "/prakti/static/js/main.30a60925.chunk.js"
+    "revision": "f87302155edfb036992c",
+    "url": "/prakti/static/js/main.3593a565.chunk.js"
   },
   {
     "revision": "c304b9e394e4f8ce65eb",
