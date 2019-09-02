@@ -1,4 +1,4 @@
-import { Machine, interpret } from 'xstate';
+import { Machine } from 'xstate';
 
 const NEW_QUESTION_ASKED = 'NEW_QUESTION_ASKED';
 const TEACHER_STARTED_REACTING = 'TEACHER_STARTED_REACTING';
@@ -12,7 +12,27 @@ const TEACHER_CANCELED_QUESTION = 'TEACHER_CANCELED_QUESTION';
 const TEACHER_ANSWERED_QUESTION = 'TEACHER_ANSWERED_QUESTION';
 const TEACHER_REACTED_UNEXPECTEDLY = 'TEACHER_REACTED_UNEXPECTEDLY';
 
-const praktiMachine = Machine({
+const actionStrings = {
+    [NEW_QUESTION_ASKED]: 'Neue Frage gestellt',
+    [TEACHER_STARTED_REACTING]: 'Lehrer reagiert',
+    [FIRST_STUDENT_RAISED_HAND]: '1. Schüler meldet sich',
+    [FIRST_STUDENT_ANSWERED_QUESTION]: '1. Schüler antwortet',
+    [SOME_STUDENT_ANSWERED_QUESTION]: 'n. Schüler antwortet, n > 1',
+    [TEACHER_MOTIVATED]: 'Motiviert Klasse',
+    [TEACHER_ASKED_NEW_QUESTION]: 'Stellt neue Frage',
+    [TEACHER_SIMPLIFIED_QUESTION]: 'Vereinfacht Frage',
+    [TEACHER_CANCELED_QUESTION]: 'Bricht ab',
+    [TEACHER_ANSWERED_QUESTION]: 'Beantwortet selbst',
+    [TEACHER_REACTED_UNEXPECTEDLY]: 'Unerwartete Reaktion',
+};
+
+export const getActionText = id => actionStrings[id] || throwActionTextError();
+
+const throwActionTextError = () => {
+    throw new Error('No action with this id defined');
+};
+
+export const praktiMachine = Machine({
     id: 'prakti',
     initial: 'questionFinished',
     states: {
@@ -46,5 +66,3 @@ const praktiMachine = Machine({
         },
     },
 });
-
-export const praktiInterpreter = interpret(praktiMachine);

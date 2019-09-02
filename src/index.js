@@ -1,8 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import 'typeface-roboto';
+
 import App from './App';
-import * as serviceWorker from './serviceWorker';
+import { registerServiceWorker } from './lib/serviceWorker';
 
 ReactDOM.render(<App />, document.getElementById('root'));
-serviceWorker.register();
+registerServiceWorker();

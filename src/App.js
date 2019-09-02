@@ -1,14 +1,14 @@
 import React from 'react';
-import './App.css';
+import PageWrapper from './PageWrapper';
+import ButtonGroup from './ButtonGroup';
 
-function App() {
-    return (
-        <div className="App">
-            <header className="App-header">
-                <h1>Hello World</h1>
-            </header>
-        </div>
-    );
-}
+const currentState = 'firstStudentRaisedHand';
+const onAction = console.log;
+
+const App = () => (
+    <PageWrapper>
+        <ButtonGroup currentState={currentState} onAction={onAction} />
+    </PageWrapper>
+);
 
 export default App;
