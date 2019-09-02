@@ -21,7 +21,7 @@ const LogTable = ({ log }) => {
     return (
         <Box my={2}>
             <Paper>
-                <Box p={1} height={150} className={classes.overflowScroll}>
+                <Box height={150} className={classes.overflowScroll}>
                     <Table stickyHeader size="small">
                         <TableHead>
                             <TableRow>

@@ -6,34 +6,53 @@ import LogTable from './components/LogTable';
 import Settings from './components/Settings';
 
 import { praktiMachine } from './lib/stateMachine';
+import { persistData, getInitialData } from './lib/persistence';
 
-let id = 0;
+const defaultLog = [
+    {
+        id: 0,
+        time: Date.now(),
+        currentState: praktiMachine.initial,
+        action: 'NONE',
+    },
+];
 
 const App = () => {
+    const [currentId, setId] = useState(
+        () => Math.max(0, ...getInitialData().map(obj => obj.id)) + 1,
+    );
+    const getNewId = () => {
+        const id = currentId;
+        setId(currentId + 1);
+        return id;
+    };
+
     const [shouldOpenSettings, setShouldOpenSettings] = useState(false);
-    const [currentState, setNextState] = useState(praktiMachine.initial);
-    const [log, setLog] = useState(() => [
-        {
-            id: id++,
-            time: Date.now(),
-            currentState,
-            action: 'NONE',
-        },
-    ]);
+    const [currentState, setNextState] = useState(() => {
+        const lastState = getInitialData()[0];
+        if (lastState) {
+            return praktiMachine.transition(lastState.currentState, lastState.action).value;
+        }
+
+        return praktiMachine.initial;
+    });
+    const [log, setLog] = useState(() => getInitialData() || defaultLog);
 
     const onAction = actionId => {
         const { value: nextState } = praktiMachine.transition(currentState, actionId);
-        setLog([
+        const newLog = [
             {
-                id: id++,
+                id: getNewId(),
                 time: Date.now(),
                 action: actionId,
                 currentState,
                 nextState,
             },
             ...log,
-        ]);
+        ];
+        setLog(newLog);
         setNextState(nextState);
+        persistData(newLog);
     };
 
     return (
