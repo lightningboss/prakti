@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "3492b828a1bf035f1370dae553a5e84e",
+    "revision": "03963fc3f1ff6a7fa10df980f994dedd",
     "url": "/prakti/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/prakti/static/css/2.251f1c13.chunk.css"
   },
   {
-    "revision": "dd7d9ca44278104aea05",
+    "revision": "5cc0f7893ba68b3a845b",
     "url": "/prakti/static/css/main.b8276fa2.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/prakti/static/js/2.c793d5e7.chunk.js"
   },
   {
-    "revision": "dd7d9ca44278104aea05",
-    "url": "/prakti/static/js/main.9d4e5541.chunk.js"
+    "revision": "5cc0f7893ba68b3a845b",
+    "url": "/prakti/static/js/main.00794070.chunk.js"
   },
   {
     "revision": "c304b9e394e4f8ce65eb",
