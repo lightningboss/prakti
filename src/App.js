@@ -6,7 +6,12 @@ import LogTable from './components/LogTable';
 import Settings from './components/Settings';
 
 import { praktiMachine } from './lib/stateMachine';
-import { persistData, getInitialData } from './lib/persistence';
+import {
+    persistData,
+    getInitialData,
+    clearPersistedData,
+    getPersistedDataAsString,
+} from './lib/persistence';
 
 const defaultLog = [
     {
@@ -28,6 +33,9 @@ const App = () => {
     };
 
     const [shouldOpenSettings, setShouldOpenSettings] = useState(false);
+    const openSettings = () => setShouldOpenSettings(true);
+    const closeSettings = () => setShouldOpenSettings(false);
+
     const [currentState, setNextState] = useState(() => {
         const lastState = getInitialData()[0];
         if (lastState) {
@@ -56,13 +64,31 @@ const App = () => {
     };
 
     return (
-        <PageWrapper onOpenSettings={() => setShouldOpenSettings(true)}>
+        <PageWrapper onOpenSettings={openSettings}>
             <Box display="flex" flexDirection="column" height={0.9}>
                 <ButtonGroup currentState={currentState} onAction={onAction} />
                 <LogTable log={log} />
                 <Settings
                     open={shouldOpenSettings}
-                    handleClose={() => setShouldOpenSettings(false)}
+                    handleClose={closeSettings}
+                    resetData={() => {
+                        const shouldReset = window.confirm('Are you sure?');
+                        if (!shouldReset) {
+                            return;
+                        }
+
+                        clearPersistedData();
+                        setNextState(praktiMachine.initial);
+                        setLog(defaultLog);
+                        setId(1);
+                        closeSettings();
+                    }}
+                    exportData={() => {
+                        window.prompt('Copy to clipboard:', getPersistedDataAsString());
+                    }}
+                    setSubject={() => {
+                        window.alert('Not implemented yet!');
+                    }}
                 />
             </Box>
         </PageWrapper>

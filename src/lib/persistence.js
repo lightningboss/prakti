@@ -19,6 +19,10 @@ export function getInitialData() {
     return result;
 }
 
+export function getPersistedDataAsString() {
+    return localStorage.getItem(id) || '[no-data-available]';
+}
+
 export function clearPersistedData() {
     localStorage.removeItem(id);
 }
