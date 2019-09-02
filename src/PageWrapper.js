@@ -1,6 +1,7 @@
 import React from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Box from '@material-ui/core/Box';
+import Container from '@material-ui/core/Container';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Typography from '@material-ui/core/Typography';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -28,8 +29,8 @@ const PageWrapper = ({ children, onOpenSettings }) => {
                     </IconButton>
                 </Toolbar>
             </AppBar>
-            <Box mt={9} m={2} height={1}>
-                {children}
+            <Box mt={9}>
+                <Container maxWidth="sm">{children}</Container>
             </Box>
         </>
     );

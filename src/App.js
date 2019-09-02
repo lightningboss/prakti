@@ -69,7 +69,7 @@ const App = () => {
 
     return (
         <PageWrapper onOpenSettings={openSettings}>
-            <Box display="flex" flexDirection="column" height={0.9}>
+            <Box display="flex" flexDirection="column">
                 <ButtonGroup currentState={currentState} onAction={onAction} />
                 <LogTable log={log} />
                 <Settings
