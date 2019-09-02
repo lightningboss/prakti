@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/static/css/main.b8276fa2.chunk.css",
-    "main.js": "/static/js/main.c12d6b53.chunk.js",
-    "main.js.map": "/static/js/main.c12d6b53.chunk.js.map",
-    "runtime~main.js": "/static/js/runtime~main.0d916d9f.js",
-    "runtime~main.js.map": "/static/js/runtime~main.0d916d9f.js.map",
-    "static/css/2.8271af8e.chunk.css": "/static/css/2.8271af8e.chunk.css",
-    "static/js/2.afb028ba.chunk.js": "/static/js/2.afb028ba.chunk.js",
-    "static/js/2.afb028ba.chunk.js.map": "/static/js/2.afb028ba.chunk.js.map",
-    "index.html": "/index.html",
-    "precache-manifest.c22f0e26ccec8690cfbb7c7099b740dd.js": "/precache-manifest.c22f0e26ccec8690cfbb7c7099b740dd.js",
-    "service-worker.js": "/service-worker.js",
-    "static/css/2.8271af8e.chunk.css.map": "/static/css/2.8271af8e.chunk.css.map",
-    "static/css/main.b8276fa2.chunk.css.map": "/static/css/main.b8276fa2.chunk.css.map",
-    "static/media/index.css": "/static/media/roboto-latin-900italic.ebf6d164.woff2"
+    "main.css": "/prakti/static/css/main.b8276fa2.chunk.css",
+    "main.js": "/prakti/static/js/main.30a60925.chunk.js",
+    "main.js.map": "/prakti/static/js/main.30a60925.chunk.js.map",
+    "runtime~main.js": "/prakti/static/js/runtime~main.4853c2a5.js",
+    "runtime~main.js.map": "/prakti/static/js/runtime~main.4853c2a5.js.map",
+    "static/css/2.251f1c13.chunk.css": "/prakti/static/css/2.251f1c13.chunk.css",
+    "static/js/2.afb028ba.chunk.js": "/prakti/static/js/2.afb028ba.chunk.js",
+    "static/js/2.afb028ba.chunk.js.map": "/prakti/static/js/2.afb028ba.chunk.js.map",
+    "index.html": "/prakti/index.html",
+    "precache-manifest.2affd72c74bbdb4059a39946bfeadf69.js": "/prakti/precache-manifest.2affd72c74bbdb4059a39946bfeadf69.js",
+    "service-worker.js": "/prakti/service-worker.js",
+    "static/css/2.251f1c13.chunk.css.map": "/prakti/static/css/2.251f1c13.chunk.css.map",
+    "static/css/main.b8276fa2.chunk.css.map": "/prakti/static/css/main.b8276fa2.chunk.css.map",
+    "static/media/index.css": "/prakti/static/media/roboto-latin-900italic.ebf6d164.woff2"
   }
 }
