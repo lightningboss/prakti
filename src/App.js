@@ -36,9 +36,9 @@ const App = () => {
 
     return (
         <PageWrapper>
-            <Box display="flex" flexDirection="column">
-                <LogTable log={log} />
+            <Box display="flex" flexDirection="column" height={0.9}>
                 <ButtonGroup currentState={currentState} onAction={onAction} />
+                <LogTable log={log} />
             </Box>
         </PageWrapper>
     );

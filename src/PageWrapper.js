@@ -5,12 +5,14 @@ const PageWrapper = ({ children }) => {
     return (
         <>
             <CssBaseline />
-            <AppBar position="static">
+            <AppBar position="fixed">
                 <Toolbar>
                     <Typography variant="h6">Prakti</Typography>
                 </Toolbar>
             </AppBar>
-            <Box m={2}>{children}</Box>
+            <Box mt={9} m={2} height={1}>
+                {children}
+            </Box>
         </>
     );
 };

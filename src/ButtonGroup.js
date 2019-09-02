@@ -10,6 +10,7 @@ import { getCurrentStateName, getPossibleNextActions } from './lib/stateMachine'
 const useStyles = makeStyles(theme => ({
     root: {
         padding: theme.spacing(3, 2),
+        flexGrow: 1,
     },
 }));
 
