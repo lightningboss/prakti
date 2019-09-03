@@ -40,6 +40,21 @@ const App = () => {
         persistData(newLog);
     };
 
+    const [undoItems, setUndoItems] = useState([]);
+    const undo = () => {
+        const [lastItem] = log;
+        setUndoItems([lastItem, ...undoItems]);
+        setLog(log.slice(1));
+    };
+    const redo = () => {
+        const [lastUndoItem] = undoItems;
+        setLog([lastUndoItem, ...log]);
+        setUndoItems(undoItems.slice(1));
+    };
+
+    const canRedo = undoItems.length > 0;
+    const canUndo = log.length > 1;
+
     const [{ nextState: currentState }] = log;
 
     const onAction = actionId => {
@@ -49,6 +64,10 @@ const App = () => {
 
     return (
         <PageWrapper
+            undo={undo}
+            redo={redo}
+            canUndo={canUndo}
+            canRedo={canRedo}
             resetData={() => {
                 const shouldReset = window.confirm('Are you sure?');
                 if (!shouldReset) {

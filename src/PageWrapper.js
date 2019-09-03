@@ -8,6 +8,8 @@ import Typography from '@material-ui/core/Typography';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
+import UndoIcon from '@material-ui/icons/Undo';
+import RedoIcon from '@material-ui/icons/Redo';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 
@@ -21,7 +23,16 @@ const useStyles = makeStyles({
     },
 });
 
-const PageWrapper = ({ children, exportData, setSubject, resetData }) => {
+const PageWrapper = ({
+    children,
+    exportData,
+    setSubject,
+    resetData,
+    undo,
+    redo,
+    canUndo,
+    canRedo,
+}) => {
     const classes = useStyles();
     const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
@@ -42,6 +53,12 @@ const PageWrapper = ({ children, exportData, setSubject, resetData }) => {
                     <Typography variant="h6" className={classes.title}>
                         Prakti
                     </Typography>
+                    <IconButton onClick={undo} color="inherit" disabled={!canUndo}>
+                        <UndoIcon />
+                    </IconButton>
+                    <IconButton onClick={redo} color="inherit" disabled={!canRedo}>
+                        <RedoIcon />
+                    </IconButton>
                     <IconButton onClick={handleMenu} color="inherit">
                         <MoreVertIcon />
                     </IconButton>
