@@ -3,7 +3,6 @@ import Box from '@material-ui/core/Box';
 import PageWrapper from './PageWrapper';
 import ButtonGroup from './components/ButtonGroup';
 import LogTable from './components/LogTable';
-import Settings from './components/Settings';
 
 import { praktiMachine } from './lib/stateMachine';
 import {
@@ -31,10 +30,6 @@ const App = () => {
         setId(currentId + 1);
         return id;
     };
-
-    const [shouldOpenSettings, setShouldOpenSettings] = useState(false);
-    const openSettings = () => setShouldOpenSettings(true);
-    const closeSettings = () => setShouldOpenSettings(false);
 
     const [currentState, setNextState] = useState(() => {
         const lastState = getInitialData()[0];
@@ -68,39 +63,34 @@ const App = () => {
     };
 
     return (
-        <PageWrapper onOpenSettings={openSettings}>
+        <PageWrapper
+            resetData={() => {
+                const shouldReset = window.confirm('Are you sure?');
+                if (!shouldReset) {
+                    return;
+                }
+
+                clearPersistedData();
+                setNextState(praktiMachine.initial);
+                setLog(defaultLog);
+                setId(1);
+            }}
+            exportData={() => {
+                window.prompt('Copy to clipboard:', getPersistedDataAsString());
+            }}
+            setSubject={() => {
+                const newSubject = window.prompt('Neues Fach:');
+                addToLog({
+                    action: 'NEW_SUBJECT',
+                    currentState,
+                    nextState: currentState,
+                    meta: { newSubject },
+                });
+            }}
+        >
             <Box display="flex" flexDirection="column">
                 <ButtonGroup currentState={currentState} onAction={onAction} />
                 <LogTable log={log} />
-                <Settings
-                    open={shouldOpenSettings}
-                    handleClose={closeSettings}
-                    resetData={() => {
-                        const shouldReset = window.confirm('Are you sure?');
-                        if (!shouldReset) {
-                            return;
-                        }
-
-                        clearPersistedData();
-                        setNextState(praktiMachine.initial);
-                        setLog(defaultLog);
-                        setId(1);
-                        closeSettings();
-                    }}
-                    exportData={() => {
-                        window.prompt('Copy to clipboard:', getPersistedDataAsString());
-                    }}
-                    setSubject={() => {
-                        const newSubject = window.prompt('Neues Fach:');
-                        addToLog({
-                            action: 'NEW_SUBJECT',
-                            currentState,
-                            nextState: currentState,
-                            meta: { newSubject },
-                        });
-                        closeSettings();
-                    }}
-                />
             </Box>
         </PageWrapper>
     );
