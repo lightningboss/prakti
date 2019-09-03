@@ -32,6 +32,7 @@ const PageWrapper = ({
     redo,
     canUndo,
     canRedo,
+    refreshApp,
 }) => {
     const classes = useStyles();
     const [anchorEl, setAnchorEl] = useState(null);
@@ -92,6 +93,13 @@ const PageWrapper = ({
                             }}
                         >
                             Exportieren
+                        </MenuItem>
+                        <MenuItem
+                            onClick={() => {
+                                refreshApp();
+                            }}
+                        >
+                            App refreshen
                         </MenuItem>
                         <MenuItem
                             onClick={() => {

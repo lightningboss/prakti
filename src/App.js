@@ -69,6 +69,7 @@ const App = () => {
             redo={redo}
             canUndo={canUndo}
             canRedo={canRedo}
+            refreshApp={() => window.location.reload()}
             resetData={() => {
                 const shouldReset = window.confirm('Are you sure?');
                 if (!shouldReset) {
