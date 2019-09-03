@@ -80,6 +80,10 @@ const App = () => {
             }}
             setSubject={() => {
                 const newSubject = window.prompt('Neues Fach:');
+                if (!newSubject) {
+                    return;
+                }
+
                 addToLog({
                     action: 'NEW_SUBJECT',
                     currentState,
