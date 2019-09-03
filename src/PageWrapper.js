@@ -21,6 +21,15 @@ const useStyles = makeStyles({
     title: {
         flexGrow: 1,
     },
+    aboveAppBar: {
+        top: 0,
+        position: 'fixed',
+        backgroundColor: theme.palette.primary.dark,
+        zIndex: theme.zIndex.appBar + 1,
+    },
+    appBar: {
+        marginTop: 20,
+    },
 });
 
 const PageWrapper = ({
@@ -46,10 +55,12 @@ const PageWrapper = ({
         setAnchorEl(null);
     };
 
+    const enabledAboveAppBar = matchMedia('(display-mode: standalone)').matches;
     return (
         <ThemeProvider theme={theme}>
             <CssBaseline />
-            <AppBar position="fixed">
+            {enabledAboveAppBar && <Box height={20} width={1} className={classes.aboveAppBar} />}
+            <AppBar position="fixed" className={enabledAboveAppBar ? classes.appBar : ''}>
                 <Toolbar>
                     <Typography variant="h6" className={classes.title}>
                         Prakti
@@ -112,7 +123,7 @@ const PageWrapper = ({
                     </Menu>
                 </Toolbar>
             </AppBar>
-            <Box mt={9}>
+            <Box mt={11}>
                 <Container maxWidth="sm">{children}</Container>
             </Box>
         </ThemeProvider>
