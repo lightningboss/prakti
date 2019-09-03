@@ -80,8 +80,18 @@ const App = () => {
                 setLog(defaultLog);
                 setId(1);
             }}
-            exportData={() => {
-                window.prompt('Copy to clipboard:', getPersistedDataAsString());
+            exportData={async () => {
+                if (!window.navigator.share) {
+                    alert('Exporting is not supported');
+                    return;
+                }
+                const text = getPersistedDataAsString();
+                await window.navigator.share({
+                    url: '',
+                    text,
+                    title: 'Prakti Export',
+                });
+                alert('worked');
             }}
             setSubject={() => {
                 const newSubject = window.prompt('Neues Fach:');
