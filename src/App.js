@@ -10,16 +10,8 @@ import {
     getInitialData,
     clearPersistedData,
     getPersistedDataAsString,
+    defaultLog,
 } from './lib/persistence';
-
-const defaultLog = [
-    {
-        id: 0,
-        time: Date.now(),
-        currentState: praktiMachine.initial,
-        action: 'NONE',
-    },
-];
 
 const App = () => {
     const [currentId, setId] = useState(
@@ -31,14 +23,6 @@ const App = () => {
         return id;
     };
 
-    const [currentState, setNextState] = useState(() => {
-        const lastState = getInitialData()[0];
-        if (lastState) {
-            return praktiMachine.transition(lastState.currentState, lastState.action).value;
-        }
-
-        return praktiMachine.initial;
-    });
     const [log, setLog] = useState(() => getInitialData() || defaultLog);
     const addToLog = ({ action, currentState, nextState, meta = null }) => {
         const newLog = [
@@ -56,9 +40,10 @@ const App = () => {
         persistData(newLog);
     };
 
+    const [{ nextState: currentState }] = log;
+
     const onAction = actionId => {
         const { value: nextState } = praktiMachine.transition(currentState, actionId);
-        setNextState(nextState);
         addToLog({ action: actionId, currentState, nextState });
     };
 
@@ -71,7 +56,6 @@ const App = () => {
                 }
 
                 clearPersistedData();
-                setNextState(praktiMachine.initial);
                 setLog(defaultLog);
                 setId(1);
             }}
