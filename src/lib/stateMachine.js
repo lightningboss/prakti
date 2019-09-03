@@ -26,14 +26,6 @@ const actionStrings = {
     [TEACHER_REACTED_UNEXPECTEDLY]: 'Unerwartete Reaktion',
 };
 
-export const getPossibleNextActions = currentStateId =>
-    Object.keys(praktiMachine.states[currentStateId].on).map(nextStateId => ({
-        actionId: nextStateId,
-        actionText: actionStrings[nextStateId],
-    }));
-
-export const getCurrentStateName = currentStateId => praktiMachine.states[currentStateId].meta.name;
-
 export const praktiMachine = Machine({
     id: 'prakti',
     initial: 'questionFinished',
@@ -80,5 +72,13 @@ export const praktiMachine = Machine({
         },
     },
 });
+
+export const getPossibleNextActions = currentStateId =>
+    Object.keys(praktiMachine.states[currentStateId].on).map(nextStateId => ({
+        actionId: nextStateId,
+        actionText: actionStrings[nextStateId],
+    }));
+
+export const getCurrentStateName = currentStateId => praktiMachine.states[currentStateId].meta.name;
 
 window.prakti = praktiMachine;

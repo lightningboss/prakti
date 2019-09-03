@@ -1,3 +1,4 @@
+/* eslint-disable no-alert */
 import React, { useState } from 'react';
 import Box from '@material-ui/core/Box';
 import PageWrapper from './PageWrapper';
@@ -24,6 +25,19 @@ const App = () => {
     };
 
     const [log, setLog] = useState(() => getInitialData() || defaultLog);
+
+    const [undoItems, setUndoItems] = useState([]);
+    const undo = () => {
+        const [lastItem] = log;
+        setUndoItems([lastItem, ...undoItems]);
+        setLog(log.slice(1));
+    };
+    const redo = () => {
+        const [lastUndoItem] = undoItems;
+        setLog([lastUndoItem, ...log]);
+        setUndoItems(undoItems.slice(1));
+    };
+
     const addToLog = ({ action, currentState, nextState, meta = null }) => {
         const newLog = [
             {
@@ -39,18 +53,6 @@ const App = () => {
         setLog(newLog);
         setUndoItems([]);
         persistData(newLog);
-    };
-
-    const [undoItems, setUndoItems] = useState([]);
-    const undo = () => {
-        const [lastItem] = log;
-        setUndoItems([lastItem, ...undoItems]);
-        setLog(log.slice(1));
-    };
-    const redo = () => {
-        const [lastUndoItem] = undoItems;
-        setLog([lastUndoItem, ...log]);
-        setUndoItems(undoItems.slice(1));
     };
 
     const canRedo = undoItems.length > 0;
