@@ -37,6 +37,7 @@ const App = () => {
             ...log,
         ];
         setLog(newLog);
+        setUndoItems([]);
         persistData(newLog);
     };
 
