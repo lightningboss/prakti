@@ -91,7 +91,8 @@ const App = () => {
                     text,
                     title: 'Prakti Export',
                 });
-                alert('worked');
+
+                alert('Export completed');
             }}
             setSubject={() => {
                 const newSubject = window.prompt('Neues Fach:');
