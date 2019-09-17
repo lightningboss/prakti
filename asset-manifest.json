@@ -1,16 +1,18 @@
 {
   "files": {
-    "main.js": "/prakti/static/js/main.8da59b4b.chunk.js",
-    "main.js.map": "/prakti/static/js/main.8da59b4b.chunk.js.map",
+    "main.css": "/prakti/static/css/main.1ae970aa.chunk.css",
+    "main.js": "/prakti/static/js/main.3cb63f6f.chunk.js",
+    "main.js.map": "/prakti/static/js/main.3cb63f6f.chunk.js.map",
     "runtime~main.js": "/prakti/static/js/runtime~main.4853c2a5.js",
     "runtime~main.js.map": "/prakti/static/js/runtime~main.4853c2a5.js.map",
     "static/css/2.251f1c13.chunk.css": "/prakti/static/css/2.251f1c13.chunk.css",
-    "static/js/2.bd6c9574.chunk.js": "/prakti/static/js/2.bd6c9574.chunk.js",
-    "static/js/2.bd6c9574.chunk.js.map": "/prakti/static/js/2.bd6c9574.chunk.js.map",
+    "static/js/2.a2d4c1b0.chunk.js": "/prakti/static/js/2.a2d4c1b0.chunk.js",
+    "static/js/2.a2d4c1b0.chunk.js.map": "/prakti/static/js/2.a2d4c1b0.chunk.js.map",
     "index.html": "/prakti/index.html",
-    "precache-manifest.af2bbefb70a00e89a384d0ddc85df8b1.js": "/prakti/precache-manifest.af2bbefb70a00e89a384d0ddc85df8b1.js",
+    "precache-manifest.4c02474c2a303998784f66a9ef2a554a.js": "/prakti/precache-manifest.4c02474c2a303998784f66a9ef2a554a.js",
     "service-worker.js": "/prakti/service-worker.js",
     "static/css/2.251f1c13.chunk.css.map": "/prakti/static/css/2.251f1c13.chunk.css.map",
+    "static/css/main.1ae970aa.chunk.css.map": "/prakti/static/css/main.1ae970aa.chunk.css.map",
     "static/media/index.css": "/prakti/static/media/roboto-latin-900italic.ebf6d164.woff2"
   }
 }
