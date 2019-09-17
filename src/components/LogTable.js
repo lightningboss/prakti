@@ -25,15 +25,15 @@ const LogTable = ({ log }) => {
                     <Table stickyHeader size="small">
                         <TableHead>
                             <TableRow>
-                                <TableCell>State</TableCell>
                                 <TableCell>Action</TableCell>
+                                <TableCell>Next State</TableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>
                             {log.map(entry => (
                                 <TableRow hover role="checkbox" tabIndex={-1} key={entry.id}>
-                                    <TableCell>{entry.currentState}</TableCell>
                                     <TableCell>{entry.action}</TableCell>
+                                    <TableCell>{entry.nextState}</TableCell>
                                 </TableRow>
                             ))}
                         </TableBody>
