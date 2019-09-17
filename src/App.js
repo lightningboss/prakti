@@ -73,7 +73,7 @@ const App = () => {
             canRedo={canRedo}
             refreshApp={() => window.location.reload(true)}
             resetData={() => {
-                const shouldReset = window.confirm('Are you sure?');
+                const shouldReset = window.confirm('Bist du dir sicher?');
                 if (!shouldReset) {
                     return;
                 }
@@ -84,7 +84,7 @@ const App = () => {
             }}
             exportData={async () => {
                 if (!window.navigator.share) {
-                    alert('Exporting is not supported');
+                    alert('Export wird nur von Mobilgeräten unterstützt');
                     return;
                 }
                 const text = getPersistedDataAsString();
@@ -94,7 +94,7 @@ const App = () => {
                     title: 'Prakti Export',
                 });
 
-                alert('Export completed');
+                alert('Export abgeschlossen');
             }}
             setSubject={() => {
                 const newSubject = window.prompt('Neues Fach:');
